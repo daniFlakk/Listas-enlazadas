@@ -42,22 +42,31 @@ class LinkedList {
         return result;
     }
 
-    // primaryList1(){
+    removeElement(element) {
+        var current = this.head;
+        var prev = null;
+ 
         
-    //     for (var i = 0; i < linkedList.size; i++) {
-            
-    //         let current = linkedList.head;
-    //         var result = " ";
-    //         while (i < linkedList.size) {
-    //             i++;
-    //             result = current.data;
-    //             console.log(current + "hola")
-    //             current = current.next;
-    //         }
-    //         console.log("hola")
-    //      }
-    //      return result;
-    // }  
+        while (current != null) {
+            // comparing element with current
+            // element if found then remove the
+            // and return true
+            if (current.data === element) {
+                console.log(current.data)
+
+                if (prev == null) {
+                    this.head = current.next;
+                } else {
+                    prev.next = current.next;
+                }
+                this.size--;
+                return current.element;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return -1;
+    }
     
     printList() {
         var tnode = linkedList.head;
@@ -98,14 +107,26 @@ function adToList(info){
     var ul = document.getElementById("list");
     var li = document.createElement("li");
     var children = ul.children.length + 1
-    li.setAttribute("id", "element"+children)
-    li.setAttribute("onclick", "test()")
+    li.setAttribute("id", children - 1)
+    li.setAttribute("onclick", "test(this)")
     li.appendChild(document.createTextNode(info));
     ul.appendChild(li)
     
 }
 
-function test(){
+function deleteLi(idneed){
+    var litod = document.getElementById(idneed);
+    litod.remove();
+}
+
+function test(idPress){
+    let cont = idPress.textContent;
+    let id = idPress.id;
+    console.log(idPress.textContent)
+    linkedList.removeElement(cont);
+    deleteLi(id);
+    
+    console.log(cont);
     console.log("papiromano");
 }
 
