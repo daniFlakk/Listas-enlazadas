@@ -10,8 +10,6 @@ class LinkedList {
   constructor() {
       this.head = null;
       this.size = 0; 
-      console.log("xddd");
-      
   };
  
   add(data) {
@@ -48,11 +46,7 @@ class LinkedList {
  
         
         while (current != null) {
-            // comparing element with current
-            // element if found then remove the
-            // and return true
             if (current.data === element) {
-                console.log(current.data)
 
                 if (prev == null) {
                     this.head = current.next;
@@ -83,10 +77,8 @@ class LinkedList {
 
 function addElemnt(){
     var toadd = document.getElementById("name").value;
-    console.log(toadd);
     linkedList.add(toadd);
     adToList(toadd);
-    console.log(linkedList.print() + "esto es agregando uno");
 }
 
 function primaryList(){
@@ -97,8 +89,6 @@ function primaryList(){
         const element = arreglo[i];
         adToList(element)
     }
-    console.log(arreglo[0]);
-    console.log(list)
 }
 
 
@@ -122,12 +112,9 @@ function deleteLi(idneed){
 function test(idPress){
     let cont = idPress.textContent;
     let id = idPress.id;
-    console.log(idPress.textContent)
     linkedList.removeElement(cont);
     deleteLi(id);
     
-    console.log(cont);
-    console.log("papiromano");
 }
 
 const linkedList = new LinkedList();
@@ -136,7 +123,6 @@ linkedList.add("Harrison Diaz");
 linkedList.add("Martin Chiquillo");
 linkedList.add("Miguel Rubiano");
 linkedList.add("Julian Ardila");
-console.log(linkedList);
-console.log(linkedList.print());
+
 
 window.onload = () => primaryList();
